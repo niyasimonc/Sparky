@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+</br>
+</br>
+<form action="{% url 'file_mngmnt:upload_file' %}" method="get">
+     <button type="submit">Upload a file</button><br>
+</form> 
+</br>
+</br>
+<html>
+    <head>
+      <style>
+      table, th, td {
+        border: 1px solid black;
+      }
+      </style>
+    </head>
+    <body>
+        {% if files %}
+        	<table cellspacing="10">
+            <tr>
+        	    <th>Files</th>
+          	</tr>
+            {% for file in files %}
+          	<tr>
+        	    <td><a href="{% url 'file_mngmnt:get_versions' file.file_name %}"</a>{{file.file_name}}</td>
+          	</tr>
+            {% endfor %}
+        	</table>
+        {% else %}
+            <p>No files are available.</p>
+        {% endif %}
+    </body>
+</html>

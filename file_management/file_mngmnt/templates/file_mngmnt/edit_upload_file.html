@@ -1,0 +1,40 @@
+
+	<section >
+		<h2>{{title}}</h2>
+	</section>
+	<section >
+		<form action="{% url 'file_mngmnt:edit_and_upload_file' file.id %}" class="ajax" method="post" enctype="multipart/form-data">
+			{% csrf_token %}
+			<section >
+				
+				<div >
+					{% for field in form %}			
+								<div  >      
+							        <label >
+							        	{{ field.label }}
+							        	{% if field.field.required %}
+							        		<small class="star">*</small>
+							        	{% endif %}
+							        	{% if field.help_text %}
+							        		<span class="help icon-help-circled right"></span>
+							        	{% endif %}
+							        </label>							        
+										{{field}}					        
+								        
+								</div>		    
+					{% endfor %}
+
+				</div>
+
+					</div>
+				</div>
+			</section>						
+			
+			<br class="clear" />
+			<section class="submit_container">
+				<input type="submit" class="submit button" value="Submit" />
+			</section>
+		</form>
+	</section><!--(.innerBox)-->				
+
+	

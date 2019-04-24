@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+</br>
+</br>
+<form action="{% url 'file_mngmnt:edit_and_upload_file' last_file.id %}" method="get">
+     <button type="submit">Upload a new version</button><br>
+</form> 
+</br>
+</br>
+<section >
+    <h2>File's Previous Versions </h2>
+  </section>
+<html>
+    <head>
+      <style>
+      table, th, td {
+        border: 1px solid black;
+      }
+      </style>
+    </head>
+    <body>
+        {% if files %}
+        	<table cellspacing="10">
+            <tr>
+        	    <th>File Name</th>
+        	    <th>Version</th>
+          	</tr>
+            {% for file in files %}
+          	<tr>
+        	    <td><a href="/media/{{file.file}}">{{ file.file }}</a></td>
+        	    <td>{{ file.version }}</td>
+          	</tr>
+            {% endfor %}
+        	</table>
+        {% else %}
+            <p>No files are available.</p>
+        {% endif %}
+    </body>
+</html>
